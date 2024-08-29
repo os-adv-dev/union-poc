@@ -1,0 +1,25 @@
+/* ===================================================================== */
+/* Form Controls																												 */
+/* ===================================================================== */
+
+$use-global-form-controls-settings: true;
+
+///Default
+
+$form-controls-border-radius: var(--border-radius-m);
+$form-controls-border-color: var(--color-red);
+$form-controls-border-size: 2px;
+$form-controls-border-style: solid;
+
+/// Hover
+
+$form-controls-border-radius-hover: null;
+$form-controls-border-color-hover: var(--color-red);
+$form-controls-border-size-hover: 3px;
+$form-controls-border-style-hover: dashed;
+
+/// Focus
+$form-controls-border-radius-focus: null;
+$form-controls-border-color-focus: var(--color-primary);
+$form-controls-border-size-focus: null;
+$form-controls-border-style-focus: null;

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form to Generate JSON</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+    .tab-content {
+            display: none;  
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+</style>
+  </head>
+
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-md p-8 max-w-7xl w-full">
+               <ul class="flex border-b">
+                <li class="mr-1 -mb-px">
+                    <a href="#" class="tab-label bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold border-l border-t border-r rounded-t"
+                        data-tab="customer">Customer</a>
+                </li>
+                <li class="mr-1">
+                    <a href="#" class="tab-label bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+                        data-tab="font-icon">Font and Icon Font</a>
+                </li>
+                <li class="mr-1">
+                    <a href="#" class="tab-label bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+                        data-tab="colors">Colors</a>
+                </li>
+            </ul>
+            <form id="jsonForm">
+
+              <div class="tab-content active" id="customer">
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Customer Details</legend> 
+                    <div class="mb-4">
+                        <label for="customerName" class="block text-gray-700">Customer Name:</label>
+                        <input type="text" id="customerName" name="customerName" value="demo"
+                            class="w-full border rounded-md p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="themeModule" class="block text-gray-700">Theme Module:</label>
+                        <input type="text" id="themeModule" name="themeModule" value="demo_Th"
+                            class="w-full border rounded-md p-2">
+                    </div>
+                </fieldset>
+              </div>
+               <div class="tab-content" id="font-icon">
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Font Details</legend>
+                    <div class="mb-4">
+                        <label for="fontName" class="block text-gray-700">Font Name:</label>
+                        <input type="text" id="fontName" name="fontName" value="Roboto"
+                            class="w-full border rounded-md p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="headingsName" class="block text-gray-700">Headings Name:</label>
+                        <input type="text" id="headingsName" name="headingsName" value="NotoSans"
+                            class="w-full border rounded-md p-2">
+                    </div>
+                </fieldset>
+
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Icon Font Details</legend>
+                    <div class="mb-4">
+                        <label for="iconFontName" class="block text-gray-700">Icon Font Name:</label>
+                        <input type="text" id="iconFontName" name="iconFontName" value="demo-icons"
+                            class="w-full border rounded-md p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="classPrefix" class="block text-gray-700">Class Prefix:</label>
+                        <input type="text" id="classPrefix" name="classPrefix" value="font-icon"
+                            class="w-full border rounded-md p-2">
+                    </div>
+                </fieldset>
+                </div>
+                 <div class="tab-content" id="colors">
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Brand Colors</legend>
+                    <div id="brandColors">
+                        <!-- Dynamic Brand Colors will be added here -->
+                    </div>
+                    <button type="button" id="addBrandColor"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add Brand Color</button>
+                </fieldset>
+
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Extended Colors</legend>
+                    <div id="extendedColors">
+                        <!-- Dynamic Extended Colors will be added here -->
+                    </div>
+                    <button type="button" id="addExtendedColor"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add Extended Color</button>
+                </fieldset>
+
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Neutral Colors</legend>
+                    <div id="neutralColors">
+                        <!-- Dynamic Neutral Colors will be added here -->
+                    </div>
+                    <button type="button" id="addNeutralColor"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add Neutral Color</button>
+                </fieldset>
+
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Semantic Colors</legend>
+                    <div id="semanticColors">
+                        <!-- Dynamic Semantic Colors will be added here -->
+                    </div>
+                    <button type="button" id="addSemanticColor"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add Semantic Color</button>
+                </fieldset>
+</div>
+                <button type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Generate JSON</button>
+            </form>
+    <script>
+
+         const tabLabels = document.querySelectorAll('.tab-label');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabLabels.forEach((label) => {
+            label.addEventListener('click', () => {
+                const tabId = label.getAttribute('data-tab');
+                tabLabels.forEach((tabLabel) => tabLabel.classList.remove("border-l", "border-t", "border-r", "rounded-t"));
+                tabContents.forEach((tabContent) => tabContent.classList.remove('active'));
+
+                label.classList.add("border-l", "border-t", "border-r", "rounded-t");
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        var id=0;
+        // Object to store initial and dynamic colors
+        const initialColors = {
+            customer: {
+                name: "demo",
+                themeModule: "demo_Th"
+            },
+            font: {
+                name: "Roboto",
+                headingsName: "NotoSans"
+            },
+            iconFont: {
+                name: "demo-icons",
+                classPrefix: "font-icon"
+            },
+            colors: {
+                brand: {
+                    primary: "#ffff",
+                    secondary: "#ffff"
+                },
+                extended: {
+                    lightestRed: "#fff",
+                    lightRed: "#000",
+                    lightestYellow: "#fff",
+                    lightYellow: "#000"
+                },
+                neutral: {
+                    0: "#ffff",
+                    1: "#ffff"
+                },
+                semantic: {
+                    error: "#ffff",
+                    success: "#ffff"
+                }
+            }
+        };
+
+        // Function to add new color fields dynamically
+        function addColorField(container, fieldName, colorName, colorValue) {
+          debugger;
+            const colorField = document.createElement('div');
+            colorField.className = 'color-field';
+            colorField.innerHTML = `
+                <label for="${fieldName}">${colorName}:</label>
+                <input type="text" id="${fieldName}" name="${fieldName}" value="${colorValue}">
+            `;
+            container.appendChild(colorField);
+        }
+
+        // Function to add new color input fields
+        function addColorInputFields(container) {
+            const colorField = document.createElement('div');
+            colorField.className = 'color-field';
+            colorField.setAttribute('isNew',true);
+            colorField.innerHTML = `
+                <input type="text" id="text-color-${id}" name="text-color-${id}" placeholder="Color Name">
+                <input type="text" id="value-color-${id}" name="value-color-${id}" value="#000000">
+            `;
+            container.appendChild(colorField);
+            id++;
+        }
+
+        // Event listeners for adding new colors to respective categories
+        document.getElementById('addBrandColor').addEventListener('click', function() {
+            addColorInputFields(document.getElementById('brandColors'));
+        });
+
+        document.getElementById('addExtendedColor').addEventListener('click', function() {
+            addColorInputFields(document.getElementById('extendedColors'));
+        });
+
+        document.getElementById('addNeutralColor').addEventListener('click', function() {
+            addColorInputFields(document.getElementById('neutralColors'));
+        });
+
+        document.getElementById('addSemanticColor').addEventListener('click', function() {
+            addColorInputFields(document.getElementById('semanticColors'));
+        });
+
+        // Populate initial color fields
+        for (const category in initialColors.colors) {
+            const container = document.getElementById(`${category}Colors`);
+            for (const color in initialColors.colors[category]) {
+                const fieldName = `${category}_${color}`;
+                addColorField(container, fieldName, color, initialColors.colors[category][color]);
+            }
+        }
+
+        // Submission handling for generating JSON with all colors
+        document.getElementById('jsonForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            initialColors.customer.name = document.getElementById('customerName').value;
+            initialColors.customer.themeModule = document.getElementById('themeModule').value;
+            initialColors.font.name = document.getElementById('fontName').value;
+            initialColors.font.headingsName = document.getElementById('headingsName').value;
+            initialColors.iconFont.name = document.getElementById('iconFontName').value;
+            initialColors.iconFont.classPrefix = document.getElementById('classPrefix').value;
+            // Retrieve dynamic color values and names
+            for (const category in initialColors.colors) {
+               debugger;
+                const container = document.getElementById(`${category}Colors`);
+                const newColors= container.querySelectorAll('[isNew=true]');
+                newColors.forEach(function(elem){
+                  const inputName = `new${category}ColorName`;
+                const inputValue = `new${category}ColorValue`;
+
+                const colorNameInput = elem.querySelector('[id*="text-color"]');
+                const colorValueInput =  elem.querySelector('[id*="value-color"]');
+								
+                if (colorNameInput) {
+                    const fieldName = `${colorNameInput.value}`;
+                    const colorValue = colorValueInput.value;
+                    initialColors.colors[category][fieldName] = colorValue;
+                }
+                })
+               
+            }
+
+            console.log(JSON.stringify(initialColors, null, 2));
+        });
+    </script>
+</body>
+</html>

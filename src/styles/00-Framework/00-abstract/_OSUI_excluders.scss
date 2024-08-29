@@ -1,0 +1,38 @@
+/*Colors*/
+
+$color-excluders: primary, secondary, neutral-0, neutral-1, neutral-2, neutral-3,
+	neutral-4, neutral-5, neutral-6, neutral-7, neutral-8, neutral-9, neutral-10,
+	error-base, error-light, warning-base, warning-light, success-base,
+	success-light, info-base, info-light, red, red-lightest, red-lighter,
+	red-light, red-dark, red-darker, red-darkest, orange, orange-lightest,
+	orange-lighter, orange-light, orange-dark, orange-darker, orange-darkest,
+	yellow, yellow-lightest, yellow-lighter, yellow-light, yellow-dark,
+	yellow-darker, yellow-darkest, lime, lime-lightest, lime-lighter, lime-light,
+	lime-dark, lime-darker, lime-darkest, green, green-lightest, green-lighter,
+	green-light, green-dark, green-darker, green-darkest, teal, teal-lightest,
+	teal-lighter, teal-light, teal-dark, teal-darker, teal-darkest, cyan,
+	cyan-lightest, cyan-lighter, cyan-light, cyan-dark, cyan-darker, cyan-darkest,
+	blue, blue-lightest, blue-lighter, blue-light, blue-dark, blue-darker,
+	blue-darkest, indigo, indigo-lightest, indigo-lighter, indigo-light,
+	indigo-dark, indigo-darker, indigo-darkest, violet, violet-lightest,
+	violet-lighter, violet-light, violet-dark, violet-darker, violet-darkest,
+	grape, grape-lightest, grape-lighter, grape-light, grape-dark, grape-darker,
+	grape-darkest, pink, pink-lightest, pink-lighter, pink-light, pink-dark,
+	pink-darker, pink-darkest;
+
+/* Spacing */
+
+$space-excluders: none, xs, s, base, m, l, xl, xxl;
+
+/* Font size */
+
+$typography-size-exluders: display, base, xs, s, label;
+$typography-heading-size-excluders: 1, 2, 3, 4, 5, 6;
+$typography-weight-excluders: light, regular, semi-bold, bold;
+
+/* Shadow */
+$shadow-excluders: none, xs, s, m, l, xl;
+
+/* Border */
+$border-size-excluders: none, s, m, l;
+$border-radius-excluders: none, soft, rounded, circle;

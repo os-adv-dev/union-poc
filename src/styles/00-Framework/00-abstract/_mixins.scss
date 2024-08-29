@@ -1,0 +1,87 @@
+/* ===================================================================== */
+/* Form Controls																												 */
+/* ===================================================================== */
+
+@mixin form-control-borders {
+	@if ($form-controls-border-radius!= null) {
+		border-radius: $form-controls-border-radius;
+	}
+	@if (
+		$form-controls-border-color!=
+			null and
+			$form-controls-border-size!=
+			null and
+			$form-controls-border-style!=
+			null
+	) {
+		border: $form-controls-border-size
+			$form-controls-border-style
+			$form-controls-border-color;
+	} @else {
+		@if ($form-controls-border-color!= null) {
+			border-color: $form-controls-border-color;
+		}
+		@if ($form-controls-border-size!= null) {
+			border-width: $form-controls-border-size;
+		}
+		@if ($form-controls-border-style!= null) {
+			border-style: $form-controls-border-style;
+		}
+	}
+}
+
+@mixin form-control-borders-hover {
+	@if ($form-controls-border-radius-hover!= "") {
+		border-radius: $form-controls-border-radius-hover;
+	}
+	@if (
+		$form-controls-border-color-hover!=
+			null and
+			$form-controls-border-size-hover!=
+			null and
+			$form-controls-border-style-hover!=
+			null
+	) {
+		border: $form-controls-border-size-hover
+			$form-controls-border-style-hover
+			$form-controls-border-color-hover;
+	} @else {
+		@if ($form-controls-border-color-hover!= null) {
+			border-color: $form-controls-border-color-hover;
+		}
+		@if ($form-controls-border-size-hover!= null) {
+			border-width: $form-controls-border-size-hover;
+		}
+		@if ($form-controls-border-style-hover!= null) {
+			border-style: $form-controls-border-style-hover;
+		}
+	}
+}
+
+@mixin form-control-borders-focus {
+	@if ($form-controls-border-radius-focus!= "") {
+		border-radius: $form-controls-border-radius-focus;
+	}
+	@if (
+		$form-controls-border-color-focus!=
+			null and
+			$form-controls-border-size-focus!=
+			null and
+			$form-controls-border-style-focus!=
+			null
+	) {
+		border: $form-controls-border-size-focus
+			$form-controls-border-style-focus
+			$form-controls-border-color-focus;
+	} @else {
+		@if ($form-controls-border-color-focus!= null) {
+			border-color: $form-controls-border-color-focus;
+		}
+		@if ($form-controls-border-size-focus!= null) {
+			border-width: $form-controls-border-size-focus;
+		}
+		@if ($form-controls-border-style-focus!= null) {
+			border-style: $form-controls-border-style-focus;
+		}
+	}
+}

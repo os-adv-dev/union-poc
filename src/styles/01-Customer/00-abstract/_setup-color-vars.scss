@@ -1,0 +1,5 @@
+/// Color - Customer
+/// Predefined colors
+
+$customer-colors: map-get($globals, colors);
+$customer-colors: () !default;

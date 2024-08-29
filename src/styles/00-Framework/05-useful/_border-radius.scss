@@ -1,0 +1,34 @@
+@use "sass:list";
+
+/* Border Radius */
+.border-radius {
+	@each $radius in map-get($globals, "borders", radius) {
+		$key: map-get($radius, key);
+		@if not list.index($border-radius-excluders, $key) {
+			&-#{$key} {
+				border-radius: var(--border-radius-#{$key});
+			}
+
+			@each $customer-box-corner in $customer-box-corners {
+				// Generated - Eg: .border-radius-top-left-none
+				&-#{$customer-box-corner}-#{$key} {
+					border-#{$customer-box-corner}-radius: var(--border-radius-#{$key});
+				}
+			}
+
+			@each $customer-border-side, $customer-border-corner1,
+				$customer-border-corner2 in $customer-border-radius-box-sides
+			{
+				// Generated - Eg: .border-radius-top-none
+				&-#{$customer-border-side}-#{$key} {
+					border-#{$customer-border-side}-#{$customer-border-corner1}-radius: var(
+						--border-radius-#{$key}
+					);
+					border-#{$customer-border-side}-#{$customer-border-corner2}-radius: var(
+						--border-radius-#{$key}
+					);
+				}
+			}
+		}
+	}
+}

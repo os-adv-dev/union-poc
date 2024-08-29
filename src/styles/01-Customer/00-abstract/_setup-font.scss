@@ -1,0 +1,15 @@
+/* ===================================================================== */
+/*  Include Fonts
+/* ===================================================================== */
+$use-custom-font-heading: true;
+
+$font-url: "/" + map-get($globals, customer, themeModule) + "/";
+$font-url: "" !default;
+$font-name: map-get($globals, font, name); //$customerFontName;
+$font-name: "" !default;
+$font-faces: map-get($globals, font, fontFaces);
+$font-faces: () !default;
+$heading-font-name: map-get($globals, font, headingsName);
+$heading-font-name: "" !default;
+$heading-font-faces: map-get($globals, font, headingFontFaces);
+$heading-font-faces: () !default;

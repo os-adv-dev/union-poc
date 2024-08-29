@@ -1,0 +1,16 @@
+@if ($use-global-form-controls-settings) {
+	.form-control[data-input],
+	.form-control[data-textarea] {
+		@include form-control-borders;
+	}
+
+	.form-control[data-input]:hover,
+	.form-control[data-textarea]:hover {
+		@include form-control-borders-hover;
+	}
+
+	.form-control[data-input]:focus,
+	.form-control[data-textarea]:focus {
+		@include form-control-borders-focus;
+	}
+}

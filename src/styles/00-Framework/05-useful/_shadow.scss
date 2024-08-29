@@ -1,0 +1,12 @@
+@use "sass:list";
+/* Shadow */
+.shadow {
+	@each $shadow in $customer-shadow-types {
+		$key: map-get($shadow, key);
+		@if not list.index($shadow-excluders, $key) {
+			&-#{$key} {
+				box-shadow: var(--shadow-#{$key});
+			}
+		}
+	}
+}

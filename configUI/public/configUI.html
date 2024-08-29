@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form to Generate JSON</title>
+    <link rel="stylesheet" href="public/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+		
+        <script src="public/configUI.js" type="text/javascript"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+<style>
+    .tab-content {
+            display: none;  
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+</style>
+  </head>
+
+<body class="bg-gray-100">
+
+    <div class="main-content min-h-screen flex items-center justify-center">
+    	<div class="bg-white rounded-lg shadow-md p-8 max-w-7xl w-full">
+    <div class="flex justify-between">
+        <div class="flex items-center">
+            <h1>Upload a JSON File</h1>
+                    <input
+                        type="file"
+                        id="jsonFileInput"
+                        accept=".json"
+                        oninput="readFile()"
+                    />
+        </div>
+        <div class="p-10">
+
+  <div class="dropdown inline-block relative ">
+    <button id=dropdown-menu-button class=" text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+      <span class="mr-1">Run</span>
+      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+    </button>
+    <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 ">
+      <li class=""><button id="build" class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap w-full">Build</button></li>
+      <li class=""><button id="build-globals" class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-nowrap w-full" >Build globals</button></li>
+    </ul>
+  </div>
+
+</div>
+    </div>
+	 <ul class="flex border-b">
+                <li class="mr-1 -mb-px">
+                    <a href="#" class="tab-label bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold border-l border-t border-r rounded-t"
+                        data-tab="customer">Customer</a>
+                </li>
+                <li class="mr-1">
+                    <a href="#" class="tab-label bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+                        data-tab="font-icon">Font and Icon Font</a>
+                </li>
+                <li class="mr-1">
+                    <a href="#" class="tab-label bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+                        data-tab="colors">Colors</a>
+                </li>
+                <li class="mr-1">
+                    <a href="#" class="tab-label bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+                        data-tab="spacing">Spacing</a>
+                </li>
+                <li class="mr-1">
+                    <a href="#" class="tab-label bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+                        data-tab="typography">Typography</a>
+                </li>
+            </ul>
+            <form id="jsonForm">
+
+              <div class="tab-content active" id="customer">
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Customer Details</legend> 
+                    <div class="mb-4">
+                        <label for="customerName" class="block text-gray-700">Customer Name:</label>
+                        <input type="text" id="customerName" name="customerName" value=""
+                            class="w-full border rounded-md p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="themeModule" class="block text-gray-700">Theme Module:</label>
+                        <input type="text" id="themeModule" name="themeModule" value=""
+                            class="w-full border rounded-md p-2">
+                    </div>
+                </fieldset>
+              </div>
+               <div class="tab-content" id="font-icon">
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Font Details</legend>
+                    <div class="mb-4">
+                        <label for="fontName" class="block text-gray-700">Font Name:</label>
+                        <input type="text" id="fontName" name="fontName" value=""
+                            class="w-full border rounded-md p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="headingsName" class="block text-gray-700">Headings Name:</label>
+                        <input type="text" id="headingsName" name="headingsName" value=""
+                            class="w-full border rounded-md p-2">
+                    </div>
+                </fieldset>
+
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Icon Font Details</legend>
+                    <div class="mb-4">
+                        <label for="iconFontName" class="block text-gray-700">Icon Font Name:</label>
+                        <input type="text" id="iconFontName" name="iconFontName" value=""
+                            class="w-full border rounded-md p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="classPrefix" class="block text-gray-700">Class Prefix:</label>
+                        <input type="text" id="classPrefix" name="classPrefix" value=""
+                            class="w-full border rounded-md p-2">
+                    </div>
+                </fieldset>
+                </div>
+                 <div class="tab-content" id="colors">
+                   <button type="button" id="addColorPallete"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add Color Pallete</button>
+                 </div>
+                 <div class="tab-content" id="spacing">
+                    <fieldset class="mb-6">
+                    <legend class="text-xl font-bold text-blue-500">Spacing</legend>
+                    <div id="SpacingContent">
+                        <!-- Dynamic Spacing will be added here -->
+                    </div>
+                    <button type="button" id="addSpacing"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add Spacing</button>
+                </fieldset>
+
+                 </div>
+                <div class="tab-content" id="typography"></div>
+
+
+                <button type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save</button>
+            </form>
+    
+</body>
+</html>

@@ -1,0 +1,13 @@
+@if ($use-global-form-controls-settings) {
+	.vscomp-toggle-button {
+		@include form-control-borders;
+	}
+
+	.vscomp-toggle-button:hover {
+		@include form-control-borders-hover;
+	}
+
+	.vscomp-ele.pop-comp-active .vscomp-toggle-button {
+		@include form-control-borders-focus;
+	}
+}

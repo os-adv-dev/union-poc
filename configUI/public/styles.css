@@ -1,0 +1,32 @@
+@keyframes slideIn {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideOut {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-100%);
+	}
+}
+
+.alert {
+	animation: slideIn 0.5s forwards;
+}
+
+.hidden {
+	display: none;
+}
+
+.loading:after {
+	content: "\e9d0";
+	font-family: "Material Symbols Outlined";
+	animation: spin 500ms linear infinite;
+	display: inline-block;
+}

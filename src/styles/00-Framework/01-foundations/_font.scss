@@ -1,0 +1,59 @@
+@use "sass:list";
+@use "sass:map";
+@import "/src/styles/00-Framework/00-abstract/functions";
+@import "/src/styles/01-Customer/00-abstract/setup_font-vars";
+/* ============================================================================ */
+/* Include Fonts                                                                */
+/* ============================================================================ */
+$font-faces: ();
+$currentFontMap: ();
+$currentFontFamily: "";
+$currentFontWeight: "";
+
+@each $platform in $customer-text-styles {
+	@each $style in map-get($platform, values) {
+		$styleName: map-get($style, name);
+		@each $styleVariant in map-get($style, styles) {
+			$variantName: map-get($styleVariant, name);
+
+			@each $styleValue in map-get($styleVariant, styleValues) {
+				@if (map-get($styleValue, key) == "font-family") {
+					$currentFontFamily: map-get($styleValue, value);
+				}
+				@if (map-get($styleValue, key) == "font-weight") {
+					$currentFontWeight: map-get($styleValue, value);
+				}
+			}
+			$currentFontMap: (
+				$currentFontFamily: $currentFontWeight,
+			);
+
+			@if (
+				not map-has-key($font-faces, $currentFontFamily + $currentFontWeight)
+			) {
+				$font-faces: map.set(
+					$font-faces,
+					$currentFontFamily + $currentFontWeight,
+					$currentFontMap
+				);
+			}
+
+			$currentFontMap: ();
+			$currentFontFamily: "";
+			$currentFontWeight: "";
+		}
+	}
+}
+
+@each $font-face in $font-faces {
+	@each $a, $b in $font-faces {
+		@each $c, $d in $b {
+			@font-face {
+				font-family: #{$c};
+				src: getFontFileURL($c + "-" + getFontWeightName($d));
+				font-weight: #{$d};
+				font-style: normal;
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+@font-face {
+	font-family: "demo-icons";
+	font-display: block;
+	src: url("demo-icons.eot?#iefix") format("embedded-opentype"),
+url("demo-icons.woff") format("woff"),
+url("demo-icons.woff2") format("woff2"),
+url("demo-icons.ttf") format("truetype"),
+url("demo-icons.svg#demo-icons") format("svg");
+}
+
+.icon {
+	line-height: 1;
+}
+
+.icon:before {
+	font-family: demo-icons !important;
+	font-style: normal;
+	font-weight: normal !important;
+	vertical-align: top;
+}
+
+.font-iconarrow-down-white:before {
+	content: "\f101";
+}
+.font-iconarrow-down:before {
+	content: "\f102";
+}
+.font-iconarrow-right:before {
+	content: "\f103";
+}
+.font-icondrag:before {
+	content: "\f104";
+}
+.font-iconmain-menu:before {
+	content: "\f105";
+}
+.font-iconnotification:before {
+	content: "\f106";
+}
+.font-iconsearch:before {
+	content: "\f107";
+}
+

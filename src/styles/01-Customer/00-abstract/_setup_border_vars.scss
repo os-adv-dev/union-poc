@@ -1,0 +1,16 @@
+/* ---------------------------------------------------------------------------- */
+/* BORDERS																		                            */
+/* ---------------------------------------------------------------------------- */
+
+/// Border Sizes
+$customer-border-size: map-get($globals, borders, size);
+$customer-border-size: () !default;
+
+/// Border Radius
+$customer-border-radius-types: map-get($globals, borders, radius);
+$customer-border-radius-types: () !default;
+
+/// Border Radius BoxSides
+$customer-border-radius-box-sides: "top" "left" "right", "bottom" "left" "right";
+
+$customer-box-corners: "top-left", "top-right", "bottom-right", "bottom-left";

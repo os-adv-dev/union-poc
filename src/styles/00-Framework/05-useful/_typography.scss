@@ -1,0 +1,19 @@
+@use "sass:list";
+/* Typography */
+
+
+	@each $platform in $customer-text-styles {
+		.#{map-get($platform,platform)} .text {
+		@each $style in map-get($platform, values) {
+			$styleName: map-get($style, name);
+			@each $styleVariant in map-get($style, styles) {
+				$variantName: map-get($styleVariant, name);
+				&-#{$styleName}-#{$variantName} {
+					@each $styleValue in map-get($styleVariant, styleValues) {
+						#{map-get($styleValue,key)}: #{map-get($styleValue, value)};
+					}
+				}
+			}
+		}
+	}
+}

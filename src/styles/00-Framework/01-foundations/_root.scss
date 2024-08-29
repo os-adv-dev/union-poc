@@ -1,0 +1,53 @@
+@use "sass:list";
+@use "sass:string";
+
+:root {
+	@if (length($customer-colors) !=0) {
+		@each $pallete in $customer-colors {
+			$name: to-upper-case(str-slice(#{map-get($pallete, palleteName)}, 1, 1)) +
+				str-slice(#{map-get($pallete, palleteName)}, 2);
+			/*! #{$name} colors*/
+			@each $color in map-get($pallete, values) {
+				$color-key: map-get($color, key);
+				@if map-has-key($color, "singleValue") {
+					--color-#{$color-key}: #{map-get($color, singleValue)};
+				} @else if(map-has-key($color, "compostValues")) {
+					@each $variation in map-get($color, compostValues) {
+						@if (map-get($variation, key) ==$color-key) {
+							--color-#{'' + $color-key}: #{map-get($variation, singleValue)};
+						} @else {
+							--color-#{'' + $color-key}-#{map-get($variation, key)}: #{map-get(
+									$variation,
+									singleValue
+								)};
+						}
+					}
+				}
+			}
+		}
+	}
+	@if (length($customer-border-radius-types) !=0) {
+		/*! Border Radius */
+		@each $radius in $customer-border-radius-types {
+			--border-radius-#{map-get($radius,key)}: #{map-get($radius, value)};
+		}
+	}
+	@if (length($customer-border-size) !=0) {
+		/*! Border Size */
+		@each $size in $customer-border-size {
+			--border-size-#{map-get($size,key)}: #{map-get($size, value)};
+		}
+	}
+	@if (length($customer-sizes) !=0) {
+		/*! Space - Sizes */
+		@each $space in $customer-sizes {
+			--space-#{map-get($space,key)}: #{map-get($space, value)};
+		}
+	}
+	@if (length($customer-shadow-types) !=0) {
+		/*! Elevation / Shadow */
+		@each $shadow in $customer-shadow-types {
+			--shadow-#{map-get($shadow,key)}: #{map-get($shadow, value)};
+		}
+	}
+}

@@ -1,0 +1,85 @@
+@use "sass:list";
+
+/*! Text */
+
+@each $pallete in map-get($globals, "colors") {
+	$name: to-upper-case(str-slice(#{map-get($pallete, palleteName)}, 1, 1)) +
+		str-slice(#{map-get($pallete, palleteName)}, 2);
+
+	.text {
+		@each $color in map-get($pallete, values) {
+			$color-key: map-get($color, key);
+			@if map-has-key($color, "singleValue") {
+				@if not list.index($color-excluders, $color-key) {
+					&-#{$color-key} {
+						color: var(--color-#{$color-key});
+					}
+				}
+			} @else if(map-has-key($color, "compostValues")) {
+				@each $variation in map-get($color, compostValues) {
+					@if (map-get($variation, key) ==$color-key) {
+						@if not list.index($color-excluders, $color-key) {
+							&-#{"" + $color-key} {
+								color: var(--color-#{"" + $color-key});
+							}
+						}
+					} @else {
+						@if not
+							list.index(
+								$color-excluders,
+								$color-key + "-" + map-get($variation, key)
+							)
+						{
+							&-#{"" + $color-key}-#{map-get($variation, key)} {
+								color: var(
+									--color-#{"" + $color-key}-#{map-get($variation, key)}
+								);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*! Background */
+@each $pallete in map-get($globals, "colors") {
+	$name: to-upper-case(str-slice(#{map-get($pallete, palleteName)}, 1, 1)) +
+		str-slice(#{map-get($pallete, palleteName)}, 2);
+	.background {
+		@each $color in map-get($pallete, values) {
+			$color-key: map-get($color, key);
+			@if map-has-key($color, "singleValue") {
+				@if not list.index($color-excluders, $color-key) {
+					&-#{$color-key} {
+						background: var(--color-#{$color-key});
+					}
+				}
+			} @else if(map-has-key($color, "compostValues")) {
+				@each $variation in map-get($color, compostValues) {
+					@if (map-get($variation, key) ==$color-key) {
+						@if not list.index($color-excluders, $color-key) {
+							&-#{"" + $color-key} {
+								background: var(--color-#{"" + $color-key});
+							}
+						}
+					} @else {
+						@if not
+							list.index(
+								$color-excluders,
+								$color-key + "-" + map-get($variation, key)
+							)
+						{
+							&-#{"" + $color-key}-#{map-get($variation, key)} {
+								background: var(
+									--color-#{"" + $color-key}-#{map-get($variation, key)}
+								);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

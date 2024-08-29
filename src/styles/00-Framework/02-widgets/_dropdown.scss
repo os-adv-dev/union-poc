@@ -1,0 +1,15 @@
+@if ($use-global-form-controls-settings) {
+	.dropdown-container > div.dropdown-display,
+	.dropdown-container > select.dropdown-display {
+		@include form-control-borders;
+	}
+
+	.dropdown-container > div.dropdown-display:hover,
+	.dropdown-container > select.dropdown-display:hover {
+		@include form-control-borders-hover;
+	}
+
+	.dropdown-container.dropdown-expanded > div.dropdown-display {
+		@include form-control-borders-focus;
+	}
+}

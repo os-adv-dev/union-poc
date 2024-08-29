@@ -1,0 +1,46 @@
+$font-weight-map: (
+	(
+		100: "Thin",
+	),
+	(
+		300: "Light",
+	),
+	(
+		400: "Regular",
+	),
+	(
+		500: "Medium",
+	),
+	(
+		600: "SemiBold",
+	),
+	(
+		700: "Bold",
+	),
+	(
+		800: "ExtraBold",
+	),
+	(
+		900: "Black",
+	),
+	(
+		950: "ExtraBlack",
+	)
+);
+
+$font-formats: (
+	(
+		"ttf": "truetype",
+	),
+	(
+		"otf": "opentype",
+	),
+	(
+		"woff": "woff",
+	),
+	(
+		"woff2": "woff2",
+	)
+);
+
+$customer-font-files-format: ttf, woff;

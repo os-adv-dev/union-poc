@@ -1,0 +1,35 @@
+@import "/src/styles/01-Customer/00-abstract/setup_font-vars";
+
+@function getFontWeightName($value) {
+	@each $font-weight in $font-weight-map {
+		@each $number, $name in $font-weight {
+			@if ($number==$value) {
+				@return $name;
+			}
+		}
+	}
+	@return null;
+}
+
+@function getFontFileURL($filename) {
+	$url: null;
+	@each $format in $customer-font-files-format {
+		$url: $url +
+			url("/src/resources/fonts/#{$filename}.#{$format}")
+			format(#{getFontFileFormat($format)});
+		$url: unquote($url + ",");
+	}
+	$url: str-slice($url, 1, -2);
+	@return unquote($url);
+}
+
+@function getFontFileFormat($format) {
+	@each $font-format in $font-formats {
+		@each $formatName, $formatValue in $font-format {
+			@if ($formatName==$format) {
+				@return $formatValue;
+			}
+		}
+	}
+	@return null;
+}

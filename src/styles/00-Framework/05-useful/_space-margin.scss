@@ -1,0 +1,58 @@
+@use "sass:list";
+/* Margin */
+.margin {
+	@each $space in $customer-sizes {
+		$key: map-get($space, key);
+		@if not list.index($space-excluders, $key) {
+			&-#{$key} {
+				margin: var(--space-#{$key});
+			}
+		}
+	}
+
+	@each $customer-box-side in $customer-box-sides {
+		@each $space in $customer-sizes {
+			$key: map-get($space, key);
+			@if not list.index($space-excluders, $key) {
+				&-#{$customer-box-side}-#{$key} {
+					margin-#{$customer-box-side}: var(--space-#{$key});
+				}
+			}
+		}
+	}
+	@each $space in $customer-sizes {
+		$key: map-get($space, key);
+		@if not list.index($space-excluders, $key) {
+			&-x-#{$key} {
+				margin-left: var(--space-#{$key});
+				margin-right: var(--space-#{$key});
+			}
+
+			&-y-#{$key} {
+				margin-bottom: var(--space-#{$key});
+				margin-top: var(--space-#{$key});
+			}
+		}
+	}
+}
+
+// IsRTL -------------------------------------------------------------------------
+///
+.is-rtl {
+	@each $space in $customer-sizes {
+		$key: map-get($space, key);
+		@if not list.index($space-excluders, $key) {
+			.margin {
+				&-right-#{$key} {
+					margin-left: var(--space-#{$key});
+					margin-right: var(--space-none);
+				}
+
+				&-left-#{$key} {
+					margin-left: var(--space-none);
+					margin-right: var(--space-#{$key});
+				}
+			}
+		}
+	}
+}

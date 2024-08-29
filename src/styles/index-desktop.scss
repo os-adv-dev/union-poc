@@ -1,0 +1,214 @@
+@import "globals";
+
+/* =============================================================================== */
+/* SCSS Setup variables                                                            */
+/* =============================================================================== */
+@import "00-Framework/00-abstract/mixins";
+@import "00-Framework/00-abstract/OSUI_excluders";
+@import "01-Customer/00-abstract/setup-color-vars";
+@import "01-Customer/00-abstract/setup-typography-vars";
+@import "01-Customer/00-abstract/variables-form-controls";
+@import "01-Customer/00-abstract/setup-spacing-vars";
+@import "01-Customer/00-abstract/setup-font";
+@import "01-Customer/00-abstract/setup-shadow-vars";
+@import "01-Customer/00-abstract/setup_border_vars";
+
+/*!
+Section Index:
+0. Root - CSS Variables
+1. Resets
+2. HTML Elements
+    2.1. Links
+    2.2. Images
+    2.3. Headings
+3. Page Layout
+    3.1. Layout
+    3.2. Header
+    3.3. Layout Native - Header
+    3.4. Layout Side - Header
+    3.5. Menu
+    3.6. Layout Native - Menu
+    3.7. Layout Side - Menu
+    3.8. Menu - Header Logo
+    3.9. Menu - App Menu Link
+    3.10. Menu - App Login Info
+    3.11. Content
+    3.12. ThemeGrid_Container
+    3.13. Section
+    3.14. Login
+    3.15. iOS Scroll Bounce
+4. Widgets
+    4.1. Inputs and TextAreas
+    4.2. Switch
+    4.3. Checkbox
+    4.4. Dropdown
+    4.5. Button
+    4.6. List
+    4.7. List Item
+    4.8. Table
+    4.9. Table - Sortable Icon
+    4.10. Table - Bulk Actions
+    4.11. Form
+    4.12. Upload
+    4.13. Button Group
+    4.14. Popover
+    4.15. Popup
+    4.16. Feedback Message
+    4.17. Radio Button
+5. Providers
+    5.1. Flatpickr
+    5.2. NoUiSlider
+    5.3. Splide
+    5.4. VirtualSelect
+6. Patterns
+    6.1. Adaptive
+        6.1.1. Columns
+        6.1.2. Gallery
+        6.1.3. Master Detail
+    6.2. Content
+        6.2.1. Accordion
+        6.2.2. Accordion Item
+        6.2.3. Alert
+        6.2.4. Blank Slate
+        6.2.5. Card
+        6.2.6. Card Background
+        6.2.7. Card Item
+        6.2.8. Card Sectioned
+        6.2.9. Chat Message
+        6.2.10. Flip Content
+        6.2.11. Floating Content
+        6.2.12. List Item Content
+        6.2.13. Section
+        6.2.14. Tag
+        6.2.15. Tooltip
+        6.2.16. User Avatar
+    6.3. Interaction
+        6.3.1. Action Sheet
+        6.3.2. Animate
+        6.3.3. Animated Label
+        6.3.4. Balloon
+        6.3.5. Bottom Sheet
+        6.3.6. Carousel
+        6.3.7. DatePicker
+        6.3.8. Dropdown
+            6.3.8.1 Dropdown Search
+            6.3.8.2 Dropdown Tags
+        6.3.9. Floating Actions
+        6.3.10. Input With Icon
+        6.3.11. Lightbox Image
+        6.3.12. MonthPicker
+        6.3.13. Notification
+        6.3.14. RangeSlider
+        6.3.15. Scrollable Area
+        6.3.16. Search
+        6.3.17. Sidebar
+        6.3.18. Stacked Cards
+        6.3.19. TimePicker
+        6.3.20. Video
+    6.4. Navigation
+        6.4.1. Bottom Bar Item
+        6.4.2. Breadcrumbs
+        6.4.3. OverflowMenu
+        6.4.4. Pagination
+        6.4.5. Section Index
+        6.4.6. Submenu
+        6.4.7. Tabs
+        6.4.8. Timeline
+        6.4.9. Wizard
+    6.5. Numbers
+        6.5.1. Badge
+        6.5.2. Counter
+        6.5.3. Icon Badge
+        6.5.4. Progress
+            6.5.4.1 Progress Bar
+            6.5.4.2 Progress Circle
+        6.5.5. Rating
+    6.6. Utilities
+        6.6.1. Align Center
+        6.6.2. Button Loading
+        6.6.3. Center Content
+        6.6.4. Margin Container
+        6.6.5. Separator
+        6.6.6. Pull to Refresh
+        6.6.7. List Updating
+    6.7. Advanced
+        6.7.1. Dropdown ServerSide
+        6.7.2. Dropdown ServerSide Item
+    6.8. Deprecated Patterns
+        6.8.1. Accordion
+        6.8.2. Button Loading
+        6.8.3. Carousel
+        6.8.4. Datepicker
+        6.8.5. Dropdown Search an Tags (Common)
+        6.8.6. Dropdown Search
+        6.8.7. Dropdown Tags
+        6.8.8. Flip Content
+        6.8.9. Gallery
+        6.8.10. Horizontal Scroll
+        6.8.11. Notification
+        6.8.12. Progress Bar
+        6.8.13. Progress Circle
+        6.8.14. Progress Circle Fraction
+        6.8.15. Section Index
+        6.8.16. Sidebar
+        6.8.17. Submenu
+        6.8.18. Tabs
+        6.8.19. Tooltip
+        6.8.20. Video
+7. Usefull Classes
+    7.1. a11y (Accessibility)
+    7.2. Colors - Brand
+    7.3. Colors - Neutral
+    7.4. Colors - Palette
+    7.5. Colors - Semantic
+    7.6. Colors - Others
+    7.7. Text
+    7.8. Typography
+    7.9. Border Size
+    7.10. Border Radius
+    7.11. Space - Margin
+    7.12. Space - Padding
+    7.13. Shadow
+    7.14. Box Width
+    7.15. Box Height
+    7.16. Display
+    7.17. Display - Flex
+    7.18. Display - Align
+    7.19. Images
+    7.20. Overflow
+    7.21. Visibility
+    7.22. Position
+    7.23. Position - Absolute
+    7.24. Miscellaneous
+8. Screen Transitions
+9. Keyframes - Animations
+    9.1. Animate
+    9.2. Button Loading
+    9.3. List Item
+    9.4. Feedback Message
+    9.5. Pull To Refresh
+    9.6. Miscellaneous
+10. Service Studio Preview
+*/
+
+@import "00-Framework/01-foundations/font";
+/*! 0. Root - CSS Variables */
+@import "00-Framework/01-foundations/root";
+@import "01-Customer/01-foundations/root";
+
+/*!  7.2. Colors */
+@import "00-Framework/05-useful/colors";
+/*!  7.7. Text */
+@import "00-Framework/05-useful/typography";
+
+/*!  7.9. Border Size */
+@import "00-Framework/05-useful/border-size";
+
+/*!  7.10. Border Radius */
+@import "00-Framework/05-useful/border-radius";
+/*!  7.11. Space - Margin */
+@import "00-Framework/05-useful/space-margin";
+/*!  7.12. Space - Padding */
+@import "00-Framework/05-useful/space-padding";
+/*!  7.13. Shadow */
+@import "00-Framework/05-useful/shadow";

@@ -1,0 +1,39 @@
+@use "sass:list";
+
+/*Border Size */
+.border {
+	&-size {
+		@each $size in map-get($globals, "borders", size) {
+			$key: map-get($size, key);
+			@if not list.index($border-size-excluders, $key) {
+				&-#{$key} {
+					@if $key == "none" {
+						border-width: var(--border-size-#{$key});
+					} @else {
+						border: var(--border-size-#{$key}) solid currentColor;
+					}
+				}
+			}
+		}
+	}
+
+	& {
+		@each $customer-box-side in $customer-box-sides {
+			@each $size in map-get($globals, "borders", size) {
+				$key: map-get($size, key);
+				@if not list.index($border-size-excluders, $key) {
+					@if $key != "none" {
+						// Generated - Eg: .border-top-s
+						&-#{$customer-box-side}-#{$key}:not(.columns),
+						&-#{$customer-box-side}-#{$key}.columns
+							> .columns-item:not(:last-child) {
+							border-#{$customer-box-side}: var(--border-size-#{$key})
+								solid
+								currentColor;
+						}
+					}
+				}
+			}
+		}
+	}
+}

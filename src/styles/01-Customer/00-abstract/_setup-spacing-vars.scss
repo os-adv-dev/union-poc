@@ -1,0 +1,7 @@
+/// Box Sides
+$customer-box-sides: "top", "right", "bottom", "left";
+$customer-box-x-sides: "right", "left";
+$customer-box-y-sides: "top", "bottom";
+
+$customer-sizes: map-get($globals, spacing);
+$customer-sizes: () !default;
